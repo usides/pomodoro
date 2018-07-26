@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./style.css">
+	<title>Pomodoro</title>
+</head>
+
+<body>
+	<header>
+	</header>
+	<main>
+		<div class="cover">
+			<div class="panel">
+				<div class="current-tablo">
+					<p>In Active</p>
+					<p id="active-task">- stop -</p>
+				</div>
+				<div class="setup">
+					<div class="workhand">
+						<p>Pom</p>
+						<p class="time">
+							<span id="set-work">25</span>
+							<span>min</span>
+						</p>
+						<button class="button" id="work-plus-but">+</button>
+						<button class="button" id="work-minus-but">-</button>
+					</div>
+					<div class="resthand">
+						<p>Rest</p>
+						<p class="time">
+							<span id="set-rest">5</span>
+							<span>min</span>
+						</p>
+						<button class="button" id="rest-plus-but">+</button>
+						<button class="button" id="rest-minus-but">-</button>
+					</div>
+				</div>
+				<div class="timer">
+					<p><span id="time-min">25</span>:<span id="time-sec">00</span>
+					</p>
+				</div>
+				<div class="buttons">
+					<button class='button' id="start">Start</button>
+					<button class="button" id="stop">Stop</button>
+					<button class="button" id="reset">Reset</button>
+				</div>
+				<div class="tasks">
+					<form id="form" action="">
+						<div>
+							<label for="task1">Task 01</label>
+							<input type="text" name="task1" id="task1" value="Code">
+							<input type="radio" name="radios" id="radio-task1" checked>
+						</div>
+						<div>
+							<label for="task1">Task 02</label>
+							<input type="text" name="task2" id="task2" value="Work">
+							<input type="radio" name="radios" id="radio-task2">
+						</div>
+						<div>
+							<label for="task1">Task 03</label>
+							<input type="text" name="task3" id="task3" value="Fun">
+							<input type="radio" name="radios" id="radio-task3">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="counters">
+				<div class="pomcount">
+					<p>Global<br>counters</p>
+					<div>
+						<p>Pomodoro</p>
+						<p id="pom-counter-elem">0</p>
+						<p>Rest</p>
+						<p id="rest-counter-elem">0</p>
+					</div>
+				</div>
+				<div class="taskcount">
+					<!-- <p>Task counters</p> -->
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+	<audio id='work-sound' src="./sound/work.mp3"></audio>
+	<audio id='rest-sound' src="./sound/rest.mp3"></audio>
+	<script src="./main.js"></script>
+</body>
+
+</html>

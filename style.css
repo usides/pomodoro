@@ -1,0 +1,204 @@
+@font-face {
+	font-family: main;
+	src: url(./fonts/Omnes.ttf);
+}
+
+@font-face {
+	font-family: digital;
+	src: url(fonts/Digital\ V2.ttf);
+}
+
+
+html {
+	font-family: main;
+}
+
+body {
+	background-color: var(--third-color);
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+}
+
+p {
+	margin: 0;
+}
+
+:root {
+	--main-color: white;
+	--second-color: #6ba789;
+	--third-color: rgb(49, 75, 100);
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.cover {
+	display: flex;
+	align-items: flex-start;
+}
+
+.cover > div {
+	margin: 0 0.5rem;
+}
+
+main div:last-of-type {
+	/* align-self: flex-end; */
+}
+
+
+/*----------------Panel----------------*/
+
+.panel, .counters {
+	background-color: var(--third-color);
+	min-width: 22rem;
+	padding: 0rem 0rem;
+	border-radius: 1.5rem;
+	color: var(--main-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 0.3rem solid var(--main-color)
+}
+
+.current-tablo {
+	text-align: center;
+	padding: 1rem;
+	text-transform: uppercase;
+} 
+.current-tablo :first-child {
+	font-size: 1.4rem;
+	color: var(--second-color);
+}
+
+.current-tablo :last-child {
+	font-size: 1.5rem;
+}
+
+.setup {
+	display: flex;
+	width: 10rem;
+	justify-content: space-between;
+	font-size: 1.5rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--second-color);
+	border: 2px solid var(--second-color);
+	padding: 0.6rem 1rem;
+	border-radius: 0.6rem;
+}
+
+.time {
+	color: var(--main-color);
+	padding-top: 0.5rem;
+	font-size: 1.2rem;
+	text-transform: none;
+}
+
+.setup button {
+	margin-top: 0.5rem;;
+}
+
+.button {
+	outline: none;
+	color: var(--main-color);
+	background-color: var(--third-color);
+	border-radius: 0.3rem;
+	min-width: 2rem;
+	font-size: 1rem;
+	border: 2px solid var(--second-color);
+	padding: 0.4rem;
+	text-transform: uppercase;
+	font-family: main;
+}
+
+.button:hover {
+	background-color: var(--second-color);
+}
+
+.timer {
+	font-size: 4rem;
+	text-align: center;
+	padding: 1rem;
+	font-family: digital;
+}
+
+.buttons {
+	padding: 0rem 1rem;
+}
+
+.buttons .button {
+	min-width: 4rem;
+	letter-spacing: 0.06rem;
+}
+
+
+.tasks {
+	padding: 1rem;
+}
+
+.tasks div:not(:first-of-type) {
+	margin-top: 0.2rem;
+}
+
+.tasks label {
+	display: inline-block;
+	min-width: 3.4rem;
+}
+
+.tasks label, input[type=radio] {
+	margin: 0 0.5rem; 
+	
+}
+
+.tasks input[type=text] {
+	font-family: main;
+	font-size: 1rem;
+	text-transform: uppercase;
+	text-align: center;
+	border-radius: 0.2rem;
+	border: 1px solid var(--second-color);
+}
+
+/*----------------Counters----------------*/
+.counters {
+	min-width: 12rem;
+}
+
+.pomcount {
+	padding: 1rem 1rem;
+}
+
+.pomcount > p {
+	/* min-width: 12rem; */
+	color: var(--second-color);
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	text-align: center;
+	padding-bottom: 1rem;
+}
+
+.pomcount > div {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pomcount > div > p{
+	flex: 1 0 25%;
+	text-transform: uppercase;
+}
+
+.pomcount > div > p:nth-child(even){
+	text-align: end;
+	font-size: 1.5rem;
+	font-family: digital;
+}
