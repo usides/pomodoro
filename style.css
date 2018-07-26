@@ -43,35 +43,59 @@ main {
 .cover {
 	display: flex;
 	align-items: flex-start;
+	justify-content: center;
+	width: 100%;
+	flex-wrap: wrap;
 }
-
-.cover > div {
-	margin: 0 0.5rem;
-}
-
-main div:last-of-type {
-	/* align-self: flex-end; */
-}
-
 
 /*----------------Panel----------------*/
 
 .panel, .counters {
 	background-color: var(--third-color);
-	min-width: 22rem;
-	padding: 0rem 0rem;
 	border-radius: 1.5rem;
 	color: var(--main-color);
 	display: flex;
+	min-width: 20rem;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 0.3rem solid var(--main-color)
+	border: 0.3rem solid var(--main-color);
+	margin: 0.5rem 0.5rem;
+}
+
+
+.pomcount {
+	padding: 1rem 1rem;
+}
+
+.pomcount > p {
+	color: var(--second-color);
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	text-align: center;
+	padding-bottom: 0.5rem;
+}
+
+.pomcount > div {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pomcount > div > p{
+	flex: 1 0 25%;
+	text-transform: uppercase;
+}
+
+.pomcount > div > p:nth-child(even){
+	text-align: end;
+	font-size: 1.5rem;
+	font-family: digital;
 }
 
 .current-tablo {
 	text-align: center;
-	padding: 1rem;
+	padding: 0rem 0 1rem;
 	text-transform: uppercase;
 } 
 .current-tablo :first-child {
@@ -169,35 +193,32 @@ main div:last-of-type {
 }
 
 /*----------------Counters----------------*/
-.counters {
-	min-width: 12rem;
-}
 
-.pomcount {
+.taskcount {
 	padding: 1rem 1rem;
+	width: 13rem;
 }
 
-.pomcount > p {
-	/* min-width: 12rem; */
+.taskcount > p {
 	color: var(--second-color);
 	text-transform: uppercase;
 	font-size: 1.4rem;
 	text-align: center;
-	padding-bottom: 1rem;
+	padding-bottom: 0.5rem;
 }
 
-.pomcount > div {
+.taskcount > div {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 }
 
-.pomcount > div > p{
-	flex: 1 0 25%;
+.taskcount > div > p{
+	flex: 1 0 50%;
 	text-transform: uppercase;
 }
 
-.pomcount > div > p:nth-child(even){
+.taskcount > div > p:nth-child(even){
 	text-align: end;
 	font-size: 1.5rem;
 	font-family: digital;

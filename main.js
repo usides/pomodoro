@@ -8,6 +8,7 @@ const radios = document.querySelectorAll("input[type=radio]");
 const textFields = document.querySelectorAll("input[type=text]");
 const pomCounterElem = document.getElementById("pom-counter-elem");
 const restCounterElem = document.getElementById("rest-counter-elem");
+const taskStock = document.getElementById("task-stock");
 
 // Buttons
 const workPlusBut = document.getElementById("work-plus-but");
@@ -49,9 +50,10 @@ let timer, minutes, seconds;
 let isTimerOn = false;
 let isActive = false;
 let isPomodoro = true;
-let currentTask = task1.value;
+let currentTask = task1.value.toUpperCase();
 let pomCounter = 0;
 let restCounter = 0;
+let taskObject = {};
 
 // Functions
 
@@ -104,6 +106,7 @@ function start() {
 		if (minutes == 0 && seconds == 0) {
 			if (isPomodoro) {
 				setRest();
+				countTasks();
 			} else {
 				setPomodoro();
 			}
@@ -139,12 +142,17 @@ function reset() {
 	isActive = false;
 	isTimerOn = false;
 	isPomodoro = true;
+	taskObject = {};
 	pomCounterElem.innerText = 0;
 	restCounterElem.innerText = 0;
 	timeMinFi.innerText = setWorkFi.innerText;
 	if (timeMinFi.innerText <= 9) timeMinFi.innerText = "0" + timeMinFi.innerText;
 	timeSecFi.innerText = "00";
 	activeTask.innerHTML = "- Stop -";
+	const allP = document.querySelectorAll("#task-stock > p");
+	allP.forEach(function (elem) {
+		elem.remove();
+	})
 }
 
 function setRest() {
@@ -168,7 +176,7 @@ function setPomodoro() {
 function selectTask(e) {
 	const select = document.getElementById(e.target.id.slice(6));
 	e.target.value = select.value;
-	currentTask = e.target.value;
+	currentTask = e.target.value.toUpperCase();
 }
 
 function selectField(e) {
@@ -178,5 +186,27 @@ function selectField(e) {
 	}
 	select.checked = true;
 	select.value = e.target.value;
-	currentTask = select.value;
+	currentTask = select.value.toUpperCase();
 }
+
+function countTasks() {
+
+	if (taskObject[currentTask] === undefined) {
+		taskObject[currentTask] = 0;
+		const namep = document.createElement('p');
+		taskStock.appendChild(namep);
+		namep.innerText = currentTask;
+		const numberp = document.createElement('p');
+		taskStock.appendChild(numberp);
+		numberp.id = "task-id-" + currentTask;
+		numberp.innerHTML = taskObject[currentTask];
+	}
+
+	taskObject[currentTask] = taskObject[currentTask] + 1;
+	const select = document.getElementById("task-id-" + currentTask);
+	select.innerHTML = taskObject[currentTask];
+}
+
+window.onbeforeunload = function (e) {
+	return "NO!!!";
+};
