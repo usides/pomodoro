@@ -9,6 +9,8 @@ const textFields = document.querySelectorAll("input[type=text]");
 const pomCounterElem = document.getElementById("pom-counter-elem");
 const restCounterElem = document.getElementById("rest-counter-elem");
 const taskStock = document.getElementById("task-stock");
+const notesContainer = document.querySelector(".notes-container");
+
 
 // Buttons
 const workPlusBut = document.getElementById("work-plus-but");
@@ -18,6 +20,8 @@ const restMinusBut = document.getElementById("rest-minus-but");
 const startBut = document.getElementById("start");
 const stopBut = document.getElementById("stop");
 const resetBut = document.getElementById("reset");
+const newNoteBut = document.getElementById("new-note");
+const clearNotesBut = document.getElementById("clear-notes");
 
 //Fields
 const taks1 = document.getElementById("task1");
@@ -35,6 +39,9 @@ restMinusBut.addEventListener("click", decreaseRest);
 startBut.addEventListener("click", start);
 stopBut.addEventListener("click", stop);
 resetBut.addEventListener("click", reset);
+newNoteBut.addEventListener('click', newNote);
+clearNotesBut.addEventListener('click', clearNotes);
+notesContainer.addEventListener('click', removeNote);
 
 for (let elem of radios) {
 	elem.addEventListener("click", selectTask);
@@ -155,6 +162,42 @@ function reset() {
 	})
 }
 
+//------------------------- New Note---------------------------------------------------------
+
+
+function newNote() {
+	newNote.counter += 1;
+	const elem = document.createElement('div');
+	elem.className = "note-elem";
+	elem.innerHTML = `<p>Note ${newNote.counter}</p><div><textarea rows='1' name='' id=''></textarea><button class='button' id=''>X</button></div>`
+	notesContainer.appendChild(elem);
+	const textarea = elem.querySelector('textarea');
+	textarea.focus();
+	textarea.onkeyup = function () {
+		auto_grow(this);
+	}
+}
+newNote.counter = 0;
+
+//------------------------- Clear Notes---------------------------------------------------------
+
+function clearNotes() {
+	const elems = document.querySelectorAll('.note-elem');
+	elems.forEach(function (elem) {
+		elem.remove();
+		newNote.counter = 0;
+	})
+}
+//------------------------- Remove Note---------------------------------------------------------
+
+function removeNote(e) {
+	if (!e.target.matches('button')) return;
+	const elem = e.target.closest('.note-elem');
+	elem.remove();
+}
+
+//------------------------- Other---------------------------------------------------------
+
 function setRest() {
 	minutes = +setRestFi.innerText;
 	isPomodoro = false;
@@ -205,6 +248,14 @@ function countTasks() {
 	taskObject[currentTask] = taskObject[currentTask] + 1;
 	const select = document.getElementById("task-id-" + currentTask);
 	select.innerHTML = taskObject[currentTask];
+}
+
+function auto_grow(element) {
+	console.log(element.scrollHeight);
+	if (element.scrollHeight > 26) {
+		element.style.height = "22px";
+		element.style.height = (element.scrollHeight) + "px";
+	}
 }
 
 window.onbeforeunload = function (e) {
